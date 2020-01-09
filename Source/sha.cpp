@@ -77,9 +77,8 @@ void SHA1ProcessMessageBlock(SHA1Context *context)
 	DWORD W[80];
 	DWORD A, B, C, D, E;
 
-	DWORD *buf = (DWORD *)context->buffer;
 	for (i = 0; i < 16; i++)
-		W[i] = buf[i];
+		W[i] = (unsigned int)context->buffer[i];//no need for swapping; same as SwapLE32(buf[i]);
 
 	for (i = 16; i < 80; i++) {
 		W[i] = W[i - 16] ^ W[i - 14] ^ W[i - 8] ^ W[i - 3];

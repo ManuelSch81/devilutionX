@@ -414,6 +414,7 @@ void UiSetupPlayerInfo(char *infostr, _uiheroinfo *pInfo, DWORD type)
 {
 	SStrCopy(connect_plrinfostr, infostr, 128);
 	char format[32] = "";
+	type = SwapLE32(type);
 	strncpy(format, (char *)&type, 4);
 	strcat(format, " %d %d %d %d %d %d %d %d %d");
 

@@ -775,6 +775,9 @@ void SetPlrHandItem(ItemStruct *h, int idata)
 {
 	ItemDataStruct *pAllItem;
 
+	if (SwapLE16(idata) < idata)
+		idata = SwapLE16(idata);
+
 	pAllItem = &AllItemsList[idata];
 
 	// zero-initialize struct
